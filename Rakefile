@@ -19,10 +19,6 @@ Jeweler::Tasks.new do |gem|
   gem.description = "A simple module that holds currencies and prices from the Apple's iOS App Store."
   gem.email = "kenn.ejima@gmail.com"
   gem.authors = ["Kenn Ejima"]
-  # Include your dependencies below. Runtime dependencies are required when using your gem,
-  # and development dependencies are only needed for development (ie running rake tasks, tests, etc)
-  #  gem.add_runtime_dependency 'jabber4r', '> 0.1'
-  #  gem.add_development_dependency 'rspec', '> 1.2.3'
 end
 Jeweler::RubygemsDotOrgTasks.new
 
