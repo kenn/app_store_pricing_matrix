@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.authors = ["Kenn Ejima"]
   s.date = %q{2011-02-27}
   s.description = %q{A simple module that holds currencies and prices from the Apple's iOS App Store.}
-  s.email = ["kenn.ejima@gmail.com"]
+  s.email = %q{kenn.ejima@gmail.com}
   s.extra_rdoc_files = [
     "LICENSE.txt",
     "README.rdoc"
