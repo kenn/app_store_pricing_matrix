@@ -20,13 +20,13 @@ module AppStorePricingMatrix
 
   CUSTOMER_PRICES = {}.tap do |hash|
     CUSTOMER_CURRENCIES.map do |currency|
-      hash[currency] = File.read("#{File.dirname(__FILE__)}/prices/#{currency}").split("\n").freeze
+      hash[currency] = File.read("#{File.dirname(__FILE__)}/prices/#{currency.downcase}").split("\n").freeze
     end
   end.freeze
 
   DEVELOPER_PROCEEDS = {}.tap do |hash|
     DEVELOPER_CURRENCIES.each do |key|
-      hash[key] = File.read("#{File.dirname(__FILE__)}/prices/#{key}_pro").split("\n").freeze
+      hash[key] = File.read("#{File.dirname(__FILE__)}/prices/#{key.downcase}_pro").split("\n").freeze
     end
   end.freeze
 end
