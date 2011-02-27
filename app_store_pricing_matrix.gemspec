@@ -52,7 +52,7 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/kenn/app_store_pricing_matrix}
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.5.2}
+  s.rubygems_version = %q{1.5.3}
   s.summary = %q{Constants for App Store Pricing Matrix}
   s.test_files = [
     "spec/app_store_pricing_matrix_spec.rb",
