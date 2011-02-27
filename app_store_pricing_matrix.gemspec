@@ -27,7 +27,6 @@ Gem::Specification.new do |s|
     "VERSION",
     "app_store_pricing_matrix.gemspec",
     "lib/app_store_pricing_matrix.rb",
-    "lib/prices/.DS_Store",
     "lib/prices/aud",
     "lib/prices/aud_pro",
     "lib/prices/cad",
