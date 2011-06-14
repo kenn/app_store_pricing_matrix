@@ -28,22 +28,7 @@ RSpec::Core::RakeTask.new(:spec) do |spec|
   spec.pattern = FileList['spec/**/*_spec.rb']
 end
 
-RSpec::Core::RakeTask.new(:rcov) do |spec|
-  spec.pattern = 'spec/**/*_spec.rb'
-  spec.rcov = true
-end
-
 task :default => :spec
-
-require 'rake/rdoctask'
-Rake::RDocTask.new do |rdoc|
-  version = File.exist?('VERSION') ? File.read('VERSION') : ""
-
-  rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "app_store_pricing_matrix #{version}"
-  rdoc.rdoc_files.include('README*')
-  rdoc.rdoc_files.include('lib/**/*.rb')
-end
 
 namespace :aspm do
   desc "Parse PDF and generate files"
@@ -68,7 +53,7 @@ namespace :aspm do
       end
     end
 
-    targets = targets[split_at+15..-1]
+    targets = targets[split_at+22..-1]
 
     # Page 2 of Exhibit C
     page2 = Hash.new{|h,k| h[k] = Array.new }.tap do |hash|
