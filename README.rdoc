@@ -20,7 +20,7 @@ Some constants, useful for validation:
  => ["USD", "MXN", "CAD", "AUD", "NZD", "JPY", "EUR", "DKK", "NOK", "SEK", "CHF", "GBP"]
 
  AppStorePricingMatrix::DEVELOPER_CURRENCIES
- => ["USD", "CAD", "AUD", "JPY", "EUR", "GBP"]
+ => ["USD", "CAD", "AUD", "JPY", "EUR", "GBP", "CHF", "NOK", "NZD"]
 
 To retrieve a customer price, query with the currency and the tier number:
 
@@ -28,17 +28,17 @@ To retrieve a customer price, query with the currency and the tier number:
  => "0.99"
 
  AppStorePricingMatrix::CUSTOMER_PRICES['JPY'][1]
- => "115"
+ => "85"
 
 For developer proceeds:
 
  AppStorePricingMatrix::DEVELOPER_PROCEEDS['GBP'][30]
- => "10.95"
+ => "12.78"
 
 To retrieve a developer currency from a given customer currency:
 
- AppStorePricingMatrix::REVERSE_CURRENCY_MAP['MXN']
- => "USD"
+ AppStorePricingMatrix::REVERSE_CURRENCY_MAP['SEK']
+ => "EUR"
  
  AppStorePricingMatrix::REVERSE_CURRENCY_MAP['DKK']
  => "EUR"
