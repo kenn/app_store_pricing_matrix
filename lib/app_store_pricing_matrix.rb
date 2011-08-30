@@ -1,10 +1,14 @@
 module AppStorePricingMatrix
   CURRENCY_MAP = {
-    :usd => [ :usd, :mxn ].freeze, # WARNING: MXN is a valid Mexican peso - there's no MXP, apparently.
+    :usd => [ :usd ].freeze,
+    :mxn => [ :mxn ].freeze,
     :cad => [ :cad ].freeze,
-    :aud => [ :aud, :nzd ].freeze,
+    :aud => [ :aud ].freeze,
+    :nzd => [ :nzd ].freeze,
     :jpy => [ :jpy ].freeze,
-    :eur => [ :eur, :dkk, :nok, :sek, :chf ].freeze,
+    :eur => [ :eur, :dkk, :sek ].freeze,
+    :chf => [ :chf ].freeze,
+    :nok => [ :nok ].freeze,
     :gbp => [ :gbp ].freeze
   }.freeze
   CUSTOMER_CURRENCIES = CURRENCY_MAP.values.flatten.map{|i| i.to_s.upcase }.freeze
