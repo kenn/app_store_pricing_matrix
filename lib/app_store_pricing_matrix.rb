@@ -11,6 +11,8 @@ module AppStorePricingMatrix
     :nok => [ :nok ].freeze,
     :gbp => [ :gbp ].freeze
   }.freeze
+  
+  EURO_CURRENCIES = [ :bgn , :czk , :eek , :huf , :lvl , :ltl , :mtl , :pln , :ron ].map {|i| i.to_s.upcase }.freeze
   CUSTOMER_CURRENCIES = CURRENCY_MAP.values.flatten.map{|i| i.to_s.upcase }.freeze
   DEVELOPER_CURRENCIES = CURRENCY_MAP.keys.map{|i| i.to_s.upcase }.freeze
 
@@ -33,4 +35,11 @@ module AppStorePricingMatrix
       hash[key] = File.read("#{File.dirname(__FILE__)}/prices/#{key.downcase}_pro").split("\n").freeze
     end
   end.freeze
+  
+  def AppStorePricingMatrix.customer_currency_for_currency_code(currency_code)
+    code = currency_code.to_s.upcase
+    return code if AppStorePricingMatrix::CUSTOMER_CURRENCIES.include? code
+    return "EUR" if AppStorePricingMatrix::EURO_CURRENCIES.include? code
+    return "USD"
+  end
 end

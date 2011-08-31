@@ -40,4 +40,29 @@ describe "AppStorePricingMatrix" do
       spec_meat(file, currency)
     end
   end
+  
+  context "Currency Mapping" do
+    it "should return the given currency code if it is a valid customer currency" do
+      AppStorePricingMatrix::CUSTOMER_CURRENCIES.each do |currency|
+        AppStorePricingMatrix.customer_currency_for_currency_code(currency).should == currency
+      end
+    end
+    
+    it "should return EUR for any currency codes that operate the store in Euros" do
+      AppStorePricingMatrix::EURO_CURRENCIES.each do |currency|
+        AppStorePricingMatrix.customer_currency_for_currency_code(currency).should == "EUR"
+      end
+    end
+    
+    it "should return USD for any unknown currency code" do
+      AppStorePricingMatrix.customer_currency_for_currency_code(nil).should == "USD"
+      AppStorePricingMatrix.customer_currency_for_currency_code("XXX").should == "USD"
+      AppStorePricingMatrix.customer_currency_for_currency_code("-").should == "USD"
+    end
+    
+    it "should accept symbols and lowercase currency codes" do
+      AppStorePricingMatrix.customer_currency_for_currency_code(:eur).should == "EUR"
+      AppStorePricingMatrix.customer_currency_for_currency_code('usd').should == "USD"
+    end
+  end
 end
