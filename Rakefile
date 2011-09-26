@@ -18,7 +18,7 @@ Jeweler::Tasks.new do |gem|
   gem.summary = "Constants for App Store Pricing Matrix"
   gem.description = "A simple module that holds currencies and prices from the Apple's iOS App Store."
   gem.email = "kenn.ejima@gmail.com"
-  gem.authors = ["Kenn Ejima"]
+  gem.authors = ["Kenn Ejima", "Elliot Bowes"]
 end
 Jeweler::RubygemsDotOrgTasks.new
 
