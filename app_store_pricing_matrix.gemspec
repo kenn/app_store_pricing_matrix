@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{app_store_pricing_matrix}
-  s.version = "1.0.4"
+  s.version = "1.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Kenn Ejima"]
-  s.date = %q{2011-06-13}
+  s.authors = ["Kenn Ejima", "Elliot Bowes"]
+  s.date = %q{2011-09-26}
   s.description = %q{A simple module that holds currencies and prices from the Apple's iOS App Store.}
   s.email = %q{kenn.ejima@gmail.com}
   s.extra_rdoc_files = [
@@ -32,6 +32,7 @@ Gem::Specification.new do |s|
     "lib/prices/cad",
     "lib/prices/cad_pro",
     "lib/prices/chf",
+    "lib/prices/chf_pro",
     "lib/prices/dkk",
     "lib/prices/eur",
     "lib/prices/eur_pro",
@@ -40,8 +41,11 @@ Gem::Specification.new do |s|
     "lib/prices/jpy",
     "lib/prices/jpy_pro",
     "lib/prices/mxn",
+    "lib/prices/mxn_pro",
     "lib/prices/nok",
+    "lib/prices/nok_pro",
     "lib/prices/nzd",
+    "lib/prices/nzd_pro",
     "lib/prices/sek",
     "lib/prices/usd",
     "lib/prices/usd_pro",
@@ -58,21 +62,18 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_development_dependency(%q<rspec>, ["~> 2.6.0"])
-      s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
-      s.add_development_dependency(%q<jeweler>, ["~> 1.6.2"])
-      s.add_development_dependency(%q<pdf-reader>, [">= 0.9.1"])
+      s.add_development_dependency(%q<rspec>, [">= 0"])
+      s.add_development_dependency(%q<bundler>, [">= 0"])
+      s.add_development_dependency(%q<jeweler>, [">= 0"])
     else
-      s.add_dependency(%q<rspec>, ["~> 2.6.0"])
-      s.add_dependency(%q<bundler>, ["~> 1.0.0"])
-      s.add_dependency(%q<jeweler>, ["~> 1.6.2"])
-      s.add_dependency(%q<pdf-reader>, [">= 0.9.1"])
+      s.add_dependency(%q<rspec>, [">= 0"])
+      s.add_dependency(%q<bundler>, [">= 0"])
+      s.add_dependency(%q<jeweler>, [">= 0"])
     end
   else
-    s.add_dependency(%q<rspec>, ["~> 2.6.0"])
-    s.add_dependency(%q<bundler>, ["~> 1.0.0"])
-    s.add_dependency(%q<jeweler>, ["~> 1.6.2"])
-    s.add_dependency(%q<pdf-reader>, [">= 0.9.1"])
+    s.add_dependency(%q<rspec>, [">= 0"])
+    s.add_dependency(%q<bundler>, [">= 0"])
+    s.add_dependency(%q<jeweler>, [">= 0"])
   end
 end
 
