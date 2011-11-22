@@ -4,17 +4,17 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{app_store_pricing_matrix}
-  s.version = "1.1.0"
+  s.name = "app_store_pricing_matrix"
+  s.version = "1.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Kenn Ejima", "Elliot Bowes"]
-  s.date = %q{2011-09-26}
-  s.description = %q{A simple module that holds currencies and prices from the Apple's iOS App Store.}
-  s.email = %q{kenn.ejima@gmail.com}
+  s.date = "2011-11-22"
+  s.description = "A simple module that holds currencies and prices from the Apple's iOS App Store."
+  s.email = "kenn.ejima@gmail.com"
   s.extra_rdoc_files = [
     "LICENSE.txt",
-    "README.rdoc"
+    "README.md"
   ]
   s.files = [
     ".document",
@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
     "Gemfile",
     "Gemfile.lock",
     "LICENSE.txt",
-    "README.rdoc",
+    "README.md",
     "Rakefile",
     "VERSION",
     "app_store_pricing_matrix.gemspec",
@@ -33,6 +33,8 @@ Gem::Specification.new do |s|
     "lib/prices/cad_pro",
     "lib/prices/chf",
     "lib/prices/chf_pro",
+    "lib/prices/cny",
+    "lib/prices/cny_pro",
     "lib/prices/dkk",
     "lib/prices/eur",
     "lib/prices/eur_pro",
@@ -52,11 +54,11 @@ Gem::Specification.new do |s|
     "spec/app_store_pricing_matrix_spec.rb",
     "spec/spec_helper.rb"
   ]
-  s.homepage = %q{http://github.com/kenn/app_store_pricing_matrix}
+  s.homepage = "http://github.com/kenn/app_store_pricing_matrix"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.6.2}
-  s.summary = %q{Constants for App Store Pricing Matrix}
+  s.rubygems_version = "1.8.11"
+  s.summary = "Constants for App Store Pricing Matrix"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
