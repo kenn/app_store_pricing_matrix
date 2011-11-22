@@ -23,20 +23,20 @@ Some constants, useful for validation:
 
 ```ruby
 AppStorePricingMatrix::CUSTOMER_CURRENCIES
- #=> ["USD", "CAD", "MXN", "AUD", "NZD", "JPY", "EUR", "DKK", "SEK", "CHF", "NOK", "GBP", "CNY"]
+ => ["USD", "CAD", "MXN", "AUD", "NZD", "JPY", "EUR", "DKK", "SEK", "CHF", "NOK", "GBP", "CNY"]
 
 AppStorePricingMatrix::DEVELOPER_CURRENCIES
- #=> ["USD", "CAD", "MXN", "AUD", "NZD", "JPY", "EUR", "CHF", "NOK", "GBP", "CNY"]
+ => ["USD", "CAD", "MXN", "AUD", "NZD", "JPY", "EUR", "CHF", "NOK", "GBP", "CNY"]
 ```
 
 To retrieve a customer price, query with the currency and the tier number:
 
 ```ruby
 AppStorePricingMatrix::CUSTOMER_PRICES['USD'][1]
- #=> "0.99"
+ => "0.99"
 
 AppStorePricingMatrix::CUSTOMER_PRICES['JPY'][1]
- #=> "85"
+ => "85"
 ```
 
 For developer proceeds:
@@ -50,8 +50,8 @@ To retrieve a developer currency from a given customer currency:
 
 ```ruby
 AppStorePricingMatrix::REVERSE_CURRENCY_MAP['SEK']
- #=> "EUR"
+ => "EUR"
 
 AppStorePricingMatrix::REVERSE_CURRENCY_MAP['DKK']
- #=> "EUR"
+ => "EUR"
 ```
