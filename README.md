@@ -6,7 +6,7 @@ A simple module that holds currencies and prices from the Apple's iOS App Store.
 Install
 -------
 
- gem install app_store_pricing_matrix
+    gem install app_store_pricing_matrix
 
 Usage
 -----
