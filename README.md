@@ -1,6 +1,8 @@
 App Store Pricing Matrix
 ========================
 
+[![Build Status](https://secure.travis-ci.org/kenn/app_store_pricing_matrix.png)](http://travis-ci.org/kenn/app_store_pricing_matrix)
+
 A simple module that holds currencies and prices from the Apple's iOS App Store.
 
 Install
