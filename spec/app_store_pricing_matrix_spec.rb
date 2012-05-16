@@ -10,13 +10,20 @@ module ExampleMethods
       File.open(file) do |text|
         lines = text.readlines
 
-        it "should have 0 to 85 tiers" do
-          lines.size.should be(86)
+        it "should have 0 to 87 tiers" do
+          lines.size.should be(88)
         end
 
         it "should verify format of table content" do
           lines.each_with_index do |line,i|
             line.should match(/^\d+(?:\.\d\d)?\n?$/), "Error while reading \"#{File.basename(file)}\", line:#{i+1}"
+          end
+        end
+        
+        it "should have increasing prices" do
+          lines.each_with_index do |line,i|
+            next if i == 0
+            line.to_f.should be > lines[i - 1].to_f 
           end
         end
       end

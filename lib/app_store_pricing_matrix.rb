@@ -6,11 +6,13 @@ module AppStorePricingMatrix
     :aud => [ :aud ].freeze,
     :nzd => [ :nzd ].freeze,
     :jpy => [ :jpy ].freeze,
-    :eur => [ :eur, :dkk, :sek ].freeze,
+    :eur => [ :eur ].freeze,
     :chf => [ :chf ].freeze,
     :nok => [ :nok ].freeze,
     :gbp => [ :gbp ].freeze,
-    :cny => [ :cny ].freeze
+    :cny => [ :cny ].freeze,
+    :dkk => [ :dkk ].freeze,
+    :sek => [ :sek ].freeze
   }.freeze
   
   EURO_CURRENCIES = [ :bgn , :czk , :eek , :huf , :lvl , :ltl , :mtl , :pln , :ron ].map {|i| i.to_s.upcase }.freeze
