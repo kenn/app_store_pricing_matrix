@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "app_store_pricing_matrix"
-  s.version = "1.2.0"
+  s.version = "1.3.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Kenn Ejima", "Elliot Bowes"]
-  s.date = "2011-11-22"
+  s.date = "2012-05-16"
   s.description = "A simple module that holds currencies and prices from the Apple's iOS App Store."
   s.email = "kenn.ejima@gmail.com"
   s.extra_rdoc_files = [
@@ -20,7 +20,6 @@ Gem::Specification.new do |s|
     ".document",
     ".rspec",
     "Gemfile",
-    "Gemfile.lock",
     "LICENSE.txt",
     "README.md",
     "Rakefile",
@@ -36,6 +35,7 @@ Gem::Specification.new do |s|
     "lib/prices/cny",
     "lib/prices/cny_pro",
     "lib/prices/dkk",
+    "lib/prices/dkk_pro",
     "lib/prices/eur",
     "lib/prices/eur_pro",
     "lib/prices/gbp",
@@ -49,6 +49,7 @@ Gem::Specification.new do |s|
     "lib/prices/nzd",
     "lib/prices/nzd_pro",
     "lib/prices/sek",
+    "lib/prices/sek_pro",
     "lib/prices/usd",
     "lib/prices/usd_pro",
     "spec/app_store_pricing_matrix_spec.rb",
@@ -57,7 +58,7 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/kenn/app_store_pricing_matrix"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.11"
+  s.rubygems_version = "1.8.19"
   s.summary = "Constants for App Store Pricing Matrix"
 
   if s.respond_to? :specification_version then
