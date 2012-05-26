@@ -1,4 +1,2 @@
-.bundle
-Gemfile.lock
 pkg
-.DS_Store
+Gemfile.lock
