@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |gem|
-  gem.authors       = ["Kenn Ejima"]
+  gem.authors       = ["Kenn Ejima", "Elliot Bowes"]
   gem.email         = ["kenn.ejima@gmail.com"]
   gem.description   = %q{A simple module that holds currencies and prices from the Apple's iOS App Store.}
   gem.summary       = %q{Constants for App Store Pricing Matrix}
