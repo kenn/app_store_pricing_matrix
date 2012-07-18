@@ -1,48 +1,23 @@
 module AppStorePricingMatrix
-  CURRENCY_MAP = {
-    :usd => [ :usd ].freeze,
-    :cad => [ :cad ].freeze,
-    :mxn => [ :mxn ].freeze,
-    :aud => [ :aud ].freeze,
-    :nzd => [ :nzd ].freeze,
-    :jpy => [ :jpy ].freeze,
-    :eur => [ :eur ].freeze,
-    :chf => [ :chf ].freeze,
-    :nok => [ :nok ].freeze,
-    :gbp => [ :gbp ].freeze,
-    :cny => [ :cny ].freeze,
-    :dkk => [ :dkk ].freeze,
-    :sek => [ :sek ].freeze
-  }.freeze
-  
-  EURO_CURRENCIES = [ :bgn , :czk , :eek , :huf , :lvl , :ltl , :mtl , :pln , :ron ].map {|i| i.to_s.upcase }.freeze
-  CUSTOMER_CURRENCIES = CURRENCY_MAP.values.flatten.map{|i| i.to_s.upcase }.freeze
-  DEVELOPER_CURRENCIES = CURRENCY_MAP.keys.map{|i| i.to_s.upcase }.freeze
-
-  REVERSE_CURRENCY_MAP = {}.tap do |hash|
-    CURRENCY_MAP.keys.each do |key|
-      CURRENCY_MAP[key].each do |customer_currency|
-        hash[customer_currency.to_s.upcase] = key.to_s.upcase
-      end
-    end
-  end.freeze
+  CURRENCIES = %w(USD CAD MXN AUD NZD JPY EUR DKK SEK CHF NOK GBP CNY SGD HKD TWD).freeze
+  EURO_CURRENCIES = %w(BGN CZK EEK HUF LVL LTL MTL PLN RON).freeze
 
   CUSTOMER_PRICES = {}.tap do |hash|
-    CUSTOMER_CURRENCIES.map do |currency|
+    CURRENCIES.each do |currency|
       hash[currency] = File.read("#{File.dirname(__FILE__)}/prices/#{currency.downcase}").split("\n").freeze
     end
   end.freeze
 
   DEVELOPER_PROCEEDS = {}.tap do |hash|
-    DEVELOPER_CURRENCIES.each do |key|
-      hash[key] = File.read("#{File.dirname(__FILE__)}/prices/#{key.downcase}_pro").split("\n").freeze
+    CURRENCIES.each do |currency|
+      hash[currency] = File.read("#{File.dirname(__FILE__)}/prices/#{currency.downcase}_pro").split("\n").freeze
     end
   end.freeze
   
   def self.customer_currency_for(currency_code)
     code = currency_code.to_s.upcase
-    return code if AppStorePricingMatrix::CUSTOMER_CURRENCIES.include? code
-    return "EUR" if AppStorePricingMatrix::EURO_CURRENCIES.include? code
+    return code   if CURRENCIES.include? code
+    return 'EUR'  if EURO_CURRENCIES.include? code
     return nil
   end
 end
