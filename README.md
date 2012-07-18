@@ -13,8 +13,9 @@ Install
 Changelog
 ---------
 
-v2.0.0
+v2.0.0 (July 18, 2012)
 
+* Based on v13.
 * Added SGD, HKD and TWD.
 * `CURRENCY_MAP` and `REVERSE_CURRENCY_MAP` are removed. They are all self-referential now.
 * `CUSTOMER_CURRENCIES` and `DEVELOPER_CURRENCIES` are removed. Use `CURRENCIES` instead.
