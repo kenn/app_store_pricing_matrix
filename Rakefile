@@ -18,7 +18,7 @@ namespace :aspm do
       amount = []
       amount_pro = []
 
-      unless currency == 'gbp'
+      unless ['rub', 'zar', 'sar', 'aed'].include?(currency)
         array.each_slice(2) do |slice|
           amount << slice.first
           amount_pro << slice.last
