@@ -10,25 +10,6 @@ Install
 
     gem install app_store_pricing_matrix
 
-Changelog
----------
-
-v3.0.0 (May 2, 2016)
-
-* Complete overhaul. Now we use the JSON data fetched from Apple's hidden API.
-
-v2.1.0 (October 26, 2012)
-
-* Based on v14.
-* Added RUB, TRY, INR, IDR, ILS, ZAR, SAR and AED
-
-v2.0.0 (July 18, 2012)
-
-* Based on v13.
-* Added SGD, HKD and TWD.
-* `CURRENCY_MAP` and `REVERSE_CURRENCY_MAP` are removed. They are all self-referential now.
-* `CUSTOMER_CURRENCIES` and `DEVELOPER_CURRENCIES` are removed. Use `CURRENCIES` instead.
-
 Usage
 -----
 
@@ -74,3 +55,22 @@ When you need to update the pricing matrix,
 1. Your default browser will launch and load the JSON. Copy the entire content and paste into `input/pricing_matrix.json`.
 1. Run `rake` to check if anything is broken.
 1. Send a pull request with updated `input/pricing_matrix.json`.
+
+Changelog
+---------
+
+v3.0.0 (May 2, 2016)
+
+* Complete overhaul. Now we use the JSON data fetched from Apple's hidden API.
+
+v2.1.0 (October 26, 2012)
+
+* Based on v14.
+* Added RUB, TRY, INR, IDR, ILS, ZAR, SAR and AED
+
+v2.0.0 (July 18, 2012)
+
+* Based on v13.
+* Added SGD, HKD and TWD.
+* `CURRENCY_MAP` and `REVERSE_CURRENCY_MAP` are removed. They are all self-referential now.
+* `CUSTOMER_CURRENCIES` and `DEVELOPER_CURRENCIES` are removed. Use `CURRENCIES` instead.
