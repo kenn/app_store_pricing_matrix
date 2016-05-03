@@ -1,23 +1,64 @@
-module AppStorePricingMatrix
-  CURRENCIES = %w(USD CAD MXN AUD NZD JPY EUR DKK SEK CHF NOK GBP CNY SGD HKD TWD RUB TRY INR IDR ILS ZAR SAR AED).freeze
-  EURO_CURRENCIES = %w(BGN CZK EEK HUF LVL LTL MTL PLN RON).freeze
+require 'json'
 
-  CUSTOMER_PRICES = {}.tap do |hash|
-    CURRENCIES.each do |currency|
-      hash[currency] = File.read("#{File.dirname(__FILE__)}/prices/#{currency.downcase}").split("\n").freeze
+class AppStorePricingMatrix
+  class << self
+    def tiers
+      @tiers ||= JSON.parse(File.read('input/pricing_matrix.json'))['data']['pricingTiers'].map{|i| Tier.new(i) }
     end
-  end.freeze
 
-  DEVELOPER_PROCEEDS = {}.tap do |hash|
-    CURRENCIES.each do |currency|
-      hash[currency] = File.read("#{File.dirname(__FILE__)}/prices/#{currency.downcase}_pro").split("\n").freeze
+    def stems
+      tiers.map(&:stem)
     end
-  end.freeze
-  
-  def self.customer_currency_for(currency_code)
-    code = currency_code.to_s.upcase
-    return code   if CURRENCIES.include? code
-    return 'EUR'  if EURO_CURRENCIES.include? code
-    return nil
+
+    def countries
+      tiers.map{|tier| tier.prices.map(&:country_code) }.flatten.uniq
+    end
+
+    def currencies
+      tiers.map{|tier| tier.prices.map(&:currency_code) }.flatten.uniq
+    end
+
+    def find_by(tier: nil, country: nil)
+      tiers.find{|i| i.stem == tier }.prices.find{|price| price.country_code == country }
+    end
+  end
+
+  class Tier
+    attr_accessor :stem, :name, :prices
+
+    def initialize(hash)
+      @stem   = Integer(hash['tierStem'])
+      @name   = hash['tierName']
+      @prices = hash['pricingInfo'].map{|i| Price.new(i) }
+    end
+
+    def inspect
+      string = "#<#{self.class.name}:#{self.object_id} "
+      fields = instance_variables.map do |var|
+        value = if var == :@prices
+          "[...]"
+        else
+          instance_variable_get(var).inspect
+        end
+        "#{var}=#{value}"
+      end
+      string << fields.join(", ") << ">"
+    end
+  end
+
+  class Price
+    attr_accessor :country, :country_code, :currency_symbol, :currency_code,
+      :wholesale_price, :retail_price, :formatted_retail_price, :formatted_wholesale_price
+
+    def initialize(hash)
+      @country          = hash['country']
+      @country_code     = hash['countryCode']
+      @currency_symbol  = hash['currencySymbol']
+      @currency_code    = hash['currencyCode']
+      @wholesale_price  = hash['wholesalePrice']
+      @retail_price     = hash['retailPrice']
+      @formatted_retail_price     = hash['fRetailPrice']
+      @formatted_wholesale_price  = hash['fWholesalePrice']
+    end
   end
 end

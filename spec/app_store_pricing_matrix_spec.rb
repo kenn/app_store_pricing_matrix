@@ -1,79 +1,36 @@
-require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
+require 'spec_helper'
 
-module ExampleMethods
-  def spec_meat(file, currency)
-    context "Currency: #{currency}" do
-      it "should have currency table" do
-        expect(File.exists?(file)).to eq(true)
-      end
-
-      File.open(file) do |text|
-        lines = text.readlines
-
-        it "should have 0 to 87 tiers" do
-          expect(lines.size).to be(88)
-        end
-
-        it "should have 0 for tier 0" do
-          expect(['0', '0.00']).to include lines.first.chomp
-        end
-
-        it "should verify format of table content" do
-          lines.each_with_index do |line,i|
-            expect(line).to match(/^\d+(?:\.\d\d)?\n?$/), "Error while reading \"#{File.basename(file)}\", line:#{i+1}"
-          end
-        end
-        
-        it "should have increasing prices" do
-          lines.each_with_index do |line,i|
-            next if i == 0
-            expect(line.to_f).to be > lines[i - 1].to_f 
-          end
-        end
-      end
-    end
+describe AppStorePricingMatrix do
+  it '#stems' do
+    stems = (0..87).to_a + [510, 530, 550, 560, 570, 580, 590]
+    expect(AppStorePricingMatrix.stems).to eq stems
   end
-end
-include ExampleMethods
 
-describe "AppStorePricingMatrix" do
-  
-  context "Customer Currencies" do
-    AppStorePricingMatrix::CURRENCIES.each do |currency|
-      file = File.expand_path(File.dirname(__FILE__) + "/../lib/prices/#{currency.downcase}")
-      spec_meat(file, currency)
-    end
+  it '#countries' do
+    countries = ["US", "CA", "MX", "AU", "NZ", "JP", "CN", "SG", "HK", "TW", "ID", "IN", "RU",
+      "TR", "IL", "ZA", "SA", "AE", "GB", "DK", "SE", "CH", "NO", "LU", "MT", "CY", "DE", "FR",
+      "AT", "BG", "EE", "SK", "BE", "CZ", "LV", "LT", "NL", "ES", "IT", "SI", "GR", "IE", "PL",
+      "PT", "FI", "RO", "HU", "KR"]
+    expect(AppStorePricingMatrix.countries).to eq countries
   end
-  
-  context "Developer Proceeds" do
-    AppStorePricingMatrix::CURRENCIES.each do |currency|
-      file = File.expand_path(File.dirname(__FILE__) + "/../lib/prices/#{currency.downcase}_pro")
-      spec_meat(file, currency)
-    end
+
+  it '#currencies' do
+    currencies = ["USD", "CAD", "MXN", "AUD", "NZD", "JPY", "CNY", "SGD", "HKD", "TWD", "IDR",
+      "INR", "RUB", "TRY", "ILS", "ZAR", "SAR", "AED", "GBP", "DKK", "SEK", "CHF", "NOK", "EUR"]
+    expect(AppStorePricingMatrix.currencies).to eq currencies
   end
-  
-  context "Currency Mapping" do
-    it "should return the given currency code if it is a valid customer currency" do
-      AppStorePricingMatrix::CURRENCIES.each do |currency|
-        expect(AppStorePricingMatrix.customer_currency_for(currency)).to eq(currency)
-      end
-    end
-    
-    it "should return EUR for any currency codes that operate the store in Euros" do
-      AppStorePricingMatrix::EURO_CURRENCIES.each do |currency|
-        expect(AppStorePricingMatrix.customer_currency_for(currency)).to eq("EUR")
-      end
-    end
-    
-    it "should return nil for any unknown currency code" do
-      expect(AppStorePricingMatrix.customer_currency_for(nil)).to eq(nil)
-      expect(AppStorePricingMatrix.customer_currency_for("XXX")).to eq(nil)
-      expect(AppStorePricingMatrix.customer_currency_for("-")).to eq(nil)
-    end
-    
-    it "should accept symbols and lowercase currency codes" do
-      expect(AppStorePricingMatrix.customer_currency_for(:eur)).to eq("EUR")
-      expect(AppStorePricingMatrix.customer_currency_for('usd')).to eq("USD")
-    end
+
+  it '#find_by' do
+    price = AppStorePricingMatrix.find_by(tier: 0, country: 'US')
+    expect(price.country_code).to eq 'US'
+    expect(price.currency_code).to eq 'USD'
+    expect(price.retail_price).to eq 0
+    expect(price.wholesale_price).to eq 0
+
+    price = AppStorePricingMatrix.find_by(tier: 1, country: 'US')
+    expect(price.country_code).to eq 'US'
+    expect(price.currency_code).to eq 'USD'
+    expect(price.retail_price).to eq 0.99
+    expect(price.wholesale_price).to eq 0.7
   end
 end
