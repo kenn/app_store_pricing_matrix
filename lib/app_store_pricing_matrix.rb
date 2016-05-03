@@ -1,9 +1,13 @@
 require 'json'
+require 'pathname'
 
 class AppStorePricingMatrix
   class << self
     def tiers
-      @tiers ||= JSON.parse(File.read('input/pricing_matrix.json'))['data']['pricingTiers'].map{|i| Tier.new(i) }
+      @tiers ||= begin
+        path = Pathname.new(__FILE__).dirname.join('input', 'pricing_matrix.json')
+        JSON.parse(File.read(path))['data']['pricingTiers'].map{|i| Tier.new(i) }
+      end
     end
 
     def stems

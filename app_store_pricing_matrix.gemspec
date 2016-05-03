@@ -12,7 +12,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.name          = 'app_store_pricing_matrix'
   gem.require_paths = ['lib']
-  gem.version       = '3.0.0' # retrieve this value by: Gem.loaded_specs['app_store_pricing_matrix'].version.to_s
+  gem.version       = '3.0.1' # retrieve this value by: Gem.loaded_specs['app_store_pricing_matrix'].version.to_s
 
   gem.add_development_dependency 'rspec'
   gem.add_development_dependency 'bundler'
